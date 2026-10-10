@@ -1,9 +1,19 @@
 /* Tic-Tac-Toe Game Styles */
+h1 {
+    text-align: center;
+}
+
+#game-status {
+    min-height: 1.5em;
+    text-align: center;
+}
+
 #game-board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
     grid-template-rows: repeat(3, 100px);
     gap: 5px;
+    width: max-content;
     margin: 20px auto;
 }
 
@@ -18,8 +28,12 @@
     cursor: pointer;
 }
 
-.cell:hover {
+.cell:not(.inactive):hover {
     background-color: #e0e0e0;
+}
+
+.cell.inactive {
+    cursor: not-allowed;
 }
 
 #reset-button {
@@ -28,4 +42,8 @@
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+}
+
+#reset-button:disabled {
+    cursor: not-allowed;
 }
