@@ -48,10 +48,24 @@ h1 {
     cursor: not-allowed;
 }
 
+.game-layout {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.game-panel {
+    flex: 0 0 310px;
+}
+
 #communication {
     box-sizing: border-box;
-    width: min(100% - 32px, 350px);
-    margin: 32px auto;
+    flex: 0 1 350px;
+    min-width: 0;
+    margin: 20px 0 0;
     padding: 16px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -102,4 +116,119 @@ h1 {
 #voice-status {
     min-height: 1.5em;
     margin-bottom: 0;
+}
+
+@media (max-width: 740px) {
+    .game-layout {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+
+    #communication {
+        width: min(100% - 32px, 350px);
+        margin: 16px auto 32px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    body {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    h1 {
+        margin: 2px 0;
+        font-size: clamp(1.2rem, 6vh, 1.75rem);
+        line-height: 1.1;
+    }
+
+    #game-status {
+        min-height: 1.2em;
+        margin: 2px 0;
+        line-height: 1.2;
+    }
+
+    .game-layout {
+        box-sizing: border-box;
+        width: 100%;
+        height: calc(100dvh - 48px);
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(8px, 2vw, 20px);
+        padding: 0 8px 8px;
+    }
+
+    .game-panel {
+        flex: 0 0 auto;
+    }
+
+    #game-board {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: clamp(3px, 1vh, 5px);
+        width: min(55vh, 240px);
+        aspect-ratio: 1;
+        margin: 4px auto;
+    }
+
+    .cell {
+        font-size: clamp(1.2rem, 8vh, 2rem);
+    }
+
+    #reset-button {
+        margin: 6px auto;
+        padding: 6px 12px;
+    }
+
+    #communication {
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: column;
+        width: auto;
+        height: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: clamp(8px, 2vh, 12px);
+    }
+
+    #communication h2 {
+        flex: 0 0 auto;
+        margin-bottom: 8px;
+        font-size: clamp(1rem, 4vh, 1.25rem);
+    }
+
+    #chat-messages {
+        flex: 1 1 0;
+        min-height: 0;
+        height: auto;
+        margin-bottom: 8px;
+        padding: 6px 6px 6px 24px;
+    }
+
+    #chat-form,
+    .voice-controls {
+        flex: 0 0 auto;
+    }
+
+    .chat-controls input,
+    .chat-controls button,
+    .voice-controls button {
+        padding: 6px;
+    }
+
+    .voice-controls {
+        margin-top: 8px;
+    }
+
+    #voice-status {
+        margin: 4px 0;
+    }
+
+    #remote-audio {
+        display: block;
+        width: 100%;
+        max-height: 36px;
+    }
 }

@@ -10,34 +10,38 @@
     <!-- Tic-Tac-Toe Game plz build the UI -->
     <h1>Tic-Tac-Toe</h1>
     <p id="game-status" role="status">Connecting to game...</p>
-    <div id="game-board" aria-label="Tic-Tac-Toe board">
-        <div class="cell" data-index="0"></div>
-        <div class="cell" data-index="1"></div>
-        <div class="cell" data-index="2"></div>
-        <div class="cell" data-index="3"></div>
-        <div class="cell" data-index="4"></div>
-        <div class="cell" data-index="5"></div>
-        <div class="cell" data-index="6"></div>
-        <div class="cell" data-index="7"></div>
-        <div class="cell" data-index="8"></div>
-    </div>
-    <button id="reset-button" disabled>Reset Game</button>
-    <section id="communication" aria-label="Chat and voice">
-        <h2>Chat with your opponent</h2>
-        <ol id="chat-messages" aria-live="polite" aria-relevant="additions"></ol>
-        <form id="chat-form">
-            <label for="chat-input">Message</label>
-            <div class="chat-controls">
-                <input id="chat-input" name="message" type="text" maxlength="500" autocomplete="off" disabled>
-                <button id="chat-send" type="submit" disabled>Send</button>
+    <main class="game-layout">
+        <section class="game-panel" aria-label="Game">
+            <div id="game-board" aria-label="Tic-Tac-Toe board">
+                <div class="cell" data-index="0"></div>
+                <div class="cell" data-index="1"></div>
+                <div class="cell" data-index="2"></div>
+                <div class="cell" data-index="3"></div>
+                <div class="cell" data-index="4"></div>
+                <div class="cell" data-index="5"></div>
+                <div class="cell" data-index="6"></div>
+                <div class="cell" data-index="7"></div>
+                <div class="cell" data-index="8"></div>
             </div>
-        </form>
-        <div class="voice-controls">
-            <button id="mic-button" type="button" disabled>Enable microphone</button>
-            <p id="voice-status" role="status">Join a game to chat by voice.</p>
-            <audio id="remote-audio" autoplay controls playsinline aria-label="Opponent voice"></audio>
-        </div>
-    </section>
+            <button id="reset-button" disabled>Reset Game</button>
+        </section>
+        <section id="communication" aria-label="Chat and voice">
+            <h2>Chat with your opponent</h2>
+            <ol id="chat-messages" aria-live="polite" aria-relevant="additions"></ol>
+            <form id="chat-form">
+                <label for="chat-input">Message</label>
+                <div class="chat-controls">
+                    <input id="chat-input" name="message" type="text" maxlength="500" autocomplete="off" disabled>
+                    <button id="chat-send" type="submit" disabled>Send</button>
+                </div>
+            </form>
+            <div class="voice-controls">
+                <button id="mic-button" type="button" disabled>Enable microphone</button>
+                <p id="voice-status" role="status">Join a game to chat by voice.</p>
+                <audio id="remote-audio" autoplay controls playsinline aria-label="Opponent voice"></audio>
+            </div>
+        </section>
+    </main>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
