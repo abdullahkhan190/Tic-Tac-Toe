@@ -113,6 +113,36 @@ io.on('connection', (socket) => {
         sendGameState(game);
     });
 
+    socket.on('chatMessage', (message) => {
+        const game = gamesByPlayer.get(socket.id);
+        if (!game || typeof message !== 'string') {
+            return;
+        }
+
+        const text = message.trim();
+        if (!text || text.length > 500) {
+            return;
+        }
+
+        const opponentId = game.players.X === socket.id ? game.players.O : game.players.X;
+        const opponentSocket = io.sockets.sockets.get(opponentId);
+        opponentSocket?.emit('chatMessage', {
+            text,
+            playerSymbol: game.players.X === socket.id ? 'X' : 'O'
+        });
+    });
+
+    socket.on('voiceSignal', (signal) => {
+        const game = gamesByPlayer.get(socket.id);
+        if (!game || !signal || typeof signal !== 'object') {
+            return;
+        }
+
+        const opponentId = game.players.X === socket.id ? game.players.O : game.players.X;
+        const opponentSocket = io.sockets.sockets.get(opponentId);
+        opponentSocket?.emit('voiceSignal', signal);
+    });
+
     socket.on('disconnect', () => {
         waitingPlayers = waitingPlayers.filter((player) => player !== socket);
 

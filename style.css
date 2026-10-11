@@ -47,3 +47,59 @@ h1 {
 #reset-button:disabled {
     cursor: not-allowed;
 }
+
+#communication {
+    box-sizing: border-box;
+    width: min(100% - 32px, 350px);
+    margin: 32px auto;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+#communication h2 {
+    margin-top: 0;
+    font-size: 1.25em;
+}
+
+#chat-messages {
+    box-sizing: border-box;
+    height: 180px;
+    margin: 0 0 12px;
+    padding: 8px 8px 8px 28px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow-wrap: anywhere;
+}
+
+#chat-form label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.chat-controls {
+    display: flex;
+    gap: 8px;
+}
+
+#chat-input {
+    min-width: 0;
+    flex: 1;
+}
+
+.chat-controls input,
+.chat-controls button,
+.voice-controls button {
+    padding: 8px;
+    font: inherit;
+}
+
+.voice-controls {
+    margin-top: 16px;
+}
+
+#voice-status {
+    min-height: 1.5em;
+    margin-bottom: 0;
+}

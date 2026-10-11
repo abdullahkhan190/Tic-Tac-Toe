@@ -22,6 +22,22 @@
         <div class="cell" data-index="8"></div>
     </div>
     <button id="reset-button" disabled>Reset Game</button>
+    <section id="communication" aria-label="Chat and voice">
+        <h2>Chat with your opponent</h2>
+        <ol id="chat-messages" aria-live="polite" aria-relevant="additions"></ol>
+        <form id="chat-form">
+            <label for="chat-input">Message</label>
+            <div class="chat-controls">
+                <input id="chat-input" name="message" type="text" maxlength="500" autocomplete="off" disabled>
+                <button id="chat-send" type="submit" disabled>Send</button>
+            </div>
+        </form>
+        <div class="voice-controls">
+            <button id="mic-button" type="button" disabled>Enable microphone</button>
+            <p id="voice-status" role="status">Join a game to chat by voice.</p>
+            <audio id="remote-audio" autoplay controls playsinline aria-label="Opponent voice"></audio>
+        </div>
+    </section>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
 </body>
